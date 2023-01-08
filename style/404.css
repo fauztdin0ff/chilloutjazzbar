@@ -1,0 +1,354 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+@font-face {
+  font-family: "BravoRG";
+  src: local("BravoRG"), url("../fonts/bravorg.woff2") format("woff2"), url("../fonts/bravorg.woff") format("woff"), url("../fonts/bravorg.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  height: 100%;
+  font-family: "BravoRG";
+}
+body._lock {
+  overflow: hidden;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #1d1d1d;
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+._container {
+  width: min(100% - 1rem, 1200px);
+  margin-inline: auto;
+}
+
+.header {
+  min-height: 80px;
+  display: flex;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .header::before {
+    content: "";
+    width: 100%;
+    height: 80px;
+    background-color: #1d1d1d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+}
+.header__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__logo {
+  flex: 0 0 40px;
+  position: relative;
+}
+.header__logo img {
+  width: 100%;
+  position: absolute;
+  top: -30px;
+  left: 1em;
+  z-index: 5;
+}
+.header__logo:hover {
+  opacity: 0.8;
+}
+.header__menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.menu__icon {
+  display: none;
+}
+@media (max-width: 767px) {
+  .menu__icon {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 0;
+    flex: 0 0 44px;
+    height: 44px;
+    z-index: 5;
+    margin-right: 15px;
+  }
+  .menu__icon::before, .menu__icon::after, .menu__icon span {
+    height: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+  }
+  .menu__icon::before, .menu__icon::after {
+    content: "";
+  }
+  .menu__icon::before {
+    top: 10px;
+  }
+  .menu__icon::after {
+    bottom: 10px;
+    transform: translate(-50%, 0);
+  }
+  .menu__icon span {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .menu__icon._active::before {
+    top: 50%;
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+  .menu__icon._active::after {
+    transform: scale(0);
+  }
+  .menu__icon._active span {
+    transform: translate(-50%, 0) rotate(-45deg);
+  }
+}
+@media (max-width: 767px) {
+  .menu__body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 100%;
+    top: 0;
+    padding: 120px 30px 30px 30px;
+    transition: left 0.3s ease 0s;
+    overflow: auto;
+  }
+  .menu__body._active {
+    left: 0;
+    background-color: rgba(29, 29, 29, 0.9);
+    z-index: 1;
+    text-align: center;
+  }
+}
+@media (min-width: 767px) {
+  .menu__list {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+}
+@media (min-width: 767px) and (max-width: 1600px) {
+  .menu__list {
+    gap: calc(15px + 35 * ((100vw - 320px) / 1280));
+  }
+}
+@media (max-width: 767px) {
+  .menu__list li:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+.menu__link {
+  font-size: 19px;
+  color: #fff;
+  padding: 5px;
+  transition: all 0.3s ease 0s;
+}
+.menu__link:is(:hover, :focus) {
+  color: #d21d1d;
+}
+
+/*--------------------------------------------Home---------------------------------------------*/
+.marquee {
+  width: 100%;
+  height: 18px;
+  background-color: #830303;
+  color: #d21d1d;
+  font-size: 16px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.marquee p {
+  width: 100%;
+  margin: 0 auto;
+  -webkit-animation: scroll 16s infinite linear;
+          animation: scroll 16s infinite linear;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .marquee p {
+    -webkit-animation: scroll 25s infinite linear;
+            animation: scroll 25s infinite linear;
+  }
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+.home {
+  min-height: calc(100vh - 98px);
+  display: flex;
+  justify-content: center;
+  background: url("../images/home/main-bg-mobile.png") center/cover no-repeat;
+}
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  height: 100%;
+}
+@media (max-width: 767px) {
+  .error {
+    flex-direction: column-reverse;
+  }
+}
+.error__image {
+  position: relative;
+  top: 0;
+  left: 0;
+  flex: 0 1 40%;
+  padding-bottom: 20%;
+}
+@media (max-width: 767px) {
+  .error__image {
+    width: 100%;
+  }
+}
+.error__image::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #1d1d1d;
+  position: absolute;
+  bottom: 0px;
+}
+.error__image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.error__text {
+  flex: 0 1 60%;
+}
+@media (max-width: 767px) {
+  .error__text {
+    flex: 0 1 40%;
+  }
+}
+.error__text p:first-child {
+  font-size: 200px;
+  line-height: 1em;
+  font-weight: 600;
+}
+@media (max-width: 1600px) {
+  .error__text p:first-child {
+    font-size: calc(100px + 100 * ((100vw - 320px) / 1280));
+  }
+}
+.error__text p {
+  font-size: 30px;
+  color: #1d1d1d;
+}
+@media (max-width: 1600px) {
+  .error__text p {
+    font-size: calc(20px + 10 * ((100vw - 320px) / 1280));
+  }
+}
+.error__text a {
+  text-decoration: underline;
+  color: #1d1d1d;
+  padding: 2px;
+  border-radius: 5px;
+}
+.error__text a:hover {
+  background-color: rgba(23, 23, 23, 0.1);
+}
